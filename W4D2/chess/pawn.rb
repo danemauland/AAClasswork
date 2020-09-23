@@ -23,12 +23,13 @@ class Pawn < Piece
     end
 
     def side_attacks
+        attacks = []
         x, y = pos
         left_attack_pos = [x + forward_dir, y - 1]
         right_attack_pos = [x + forward_dir, y + 1]
-        left_attack = position_is_valid?(left_attack_pos) && piece_is_enemy_color?(left_attack_pos)
-        right_attack = position_is_valid?(right_attack_pos) && piece_is_enemy_color?(right_attack_pos)
-        [left_attack, right_attack]
+        attacks << left_attack_pos if position_is_valid?(left_attack_pos) && piece_is_enemy_color?(left_attack_pos)
+        attacks << right_attack_pos position_is_valid?(right_attack_pos) && piece_is_enemy_color?(right_attack_pos)
+        attacks
     end
 
     def position_is_valid?(pos)

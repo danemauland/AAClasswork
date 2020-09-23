@@ -8,9 +8,9 @@ require_relative "nullpiece"
 require_relative "pawn"
 
 class Board
-    attr_reader :rows
+    attr_reader :rows, :sentinel
     def set_up_board
-        board = Array.new(8) {Array.new(8)}
+        board = Array.new(8) {Array.new(8, sentinel)}
 
         board[0][0] = Rook.new(:W, self, [0,0])
         board[0][7] = Rook.new(:W, self, [0,7])
@@ -34,15 +34,12 @@ class Board
 
         (0..7).each { |i| board[6][i] = Pawn.new(:B, self, [6,i])}
 
-        null_piece = NullPiece.instance
-        (2..5).each {|row| (0..7).each {|col| board[row][col] = null_piece}}
-
-
         board
     end
 
     def initialize
         @rows = set_up_board
+        @sentinel = NullPiece.instance
     end
 
     def move_piece(color, start_pos, end_pos)
