@@ -1,4 +1,4 @@
-# require_relative "card"
+require_relative "card"
 class Hand
     attr_reader :hand, :score
     def initialize
@@ -21,6 +21,10 @@ class Hand
 
     def high_card_score
         @hand.map(&:val).sort.reverse
+    end
+
+    def render
+        puts @hand.map(&:to_s).join(" ")
     end
 
     def one_pair_score
@@ -101,6 +105,23 @@ class Hand
         @score[7] = one_pair_score
         @score[8] = high_card_score
         @score
+    end
+
+    def <=>(other_hand)
+        self.update_score
+        other_hand.update_score
+        self.score.each_with_index do |scr, i|
+            next if i == 8
+            next if scr == other_hand.score[i]
+            return 1 if scr > other_hand.score[i]
+            return -1
+        end
+        score.last.each_with_index do |scr, i|
+            next if scr == other_hand.score.last[i]
+            return 1 if scr > other_hand.score[i]
+            return -1
+        end
+        0
     end
 
 end
