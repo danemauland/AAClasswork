@@ -12,10 +12,10 @@ class ArtworkShare < ApplicationRecord
     validates :viewer_id, presence: true
 
     belongs_to :viewer,
-        foreign_id: :viewer_id,
+        foreign_key: :viewer_id,
         class_name: :User
 
     belongs_to :artwork,
-        foreign_id: :artwork_id,
+        foreign_key: :artwork_id,
         class_name: :Artwork
 end

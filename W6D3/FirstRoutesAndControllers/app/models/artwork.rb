@@ -8,6 +8,11 @@
 #  artist_id :integer          not null
 #
 class Artwork < ApplicationRecord 
+
+    def self.associated_with_user_id(user_id)
+        self.left_joins(:shared_artworks)
+        .where("artworks.artist_id = #{user_id} OR viewer_id = #{user_id}")
+    end
     validates :title, presence: true, uniqueness: {scope: :artist_id}
     validates :artist_id, presence: true
     validates :image_url, presence: true
@@ -23,4 +28,9 @@ class Artwork < ApplicationRecord
     has_many :shared_viewers,
         through: :shared_artworks,
         source: :viewer
+
+    has_many :comments,
+        foreign_key: :artwork_id,
+        class_name: :Comment,
+        dependent: :destroy
 end

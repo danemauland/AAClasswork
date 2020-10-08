@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class ArtworksController < ApplicationController
     def index
-        render json: User.all
+        render json: Artwork.associated_with_user_id(params[:user_id])
     end
 
     def create
