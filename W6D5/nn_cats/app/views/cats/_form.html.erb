@@ -1,0 +1,32 @@
+<form action=<%= kitten.persisted? ? cat_url(@kitten) : cats_url %> method = "POST" >
+    <% if kitten.persisted? %>
+        <input name="_method" type = "hidden" value="PATCH">
+    <% end %>
+
+    <label for="name">Name</label>
+        <input id="name" name="cat[name]" type = text value=<%= @kitten.name %>>
+
+    <label for ="M">M</label>
+        <input id = "M" name="cat[sex]" type ="radio" value="M" <%= (@kitten.sex == "M") ? "checked" : "" %>>    
+    <label for ="F">F</label>
+        <input id = "F" name="cat[sex]" type ="radio" value="F" <%= (@kitten.sex == "F") ? "checked" : "" %>>
+ 
+    <label for ="color">Color</label>
+    <select name="cat[color]" id="color">
+        <% if !kitten.persisted? %>
+            <option value=""></option>
+        <% end %>
+        <% Cat::COLORS.each do |col| %>
+             <option value="<%= col %>" <%= (@kitten.color == col) ? "selected" : "" %> ><%= col %></option>
+        <% end %>
+    </select>
+    
+    <label for ="birthdate">Birth Date</label>
+        <input id = "birthdate" name="cat[birth_date]" type = date value=<%= @kitten.birth_date%>>
+
+    <label for ="description">Description</label>
+        <textarea id = "description" name="cat[description]"><%= @kitten.description%></textarea>
+
+    <input type ="submit" value="Create Request">
+
+</form>

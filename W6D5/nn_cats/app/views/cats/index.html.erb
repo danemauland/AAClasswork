@@ -1,0 +1,8 @@
+<h1> All Cats </h1>
+
+<ul>
+<% @cats.all.each do |kitty| %>
+    <li><%= kitty.name %><li>
+    <a href="<%=cat_url(kitty)%>">Link to the cat</a>
+<%  end%>
+</ul>
