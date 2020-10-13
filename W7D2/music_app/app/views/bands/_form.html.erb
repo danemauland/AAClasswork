@@ -1,0 +1,25 @@
+<form action=<%= band.persisted? ? band_url(band) : bands_url %> method="POST">
+    <%= auth_token%>
+
+    <%if band.persisted?%>
+        <input type="hidden" name="_method" value="PATCH">
+    <%end%>
+
+    <label for="name">Band Name</label>
+    <input id="name" name="band[name]" type="text" value="<%=band.name%>">
+    <input type="submit" value="submit">
+
+</form>
+
+<%if band.persisted?%>
+
+    <form action=<%=band_url(band)%> method="POST">
+        <%= auth_token%>
+    
+        <input type="hidden" name="_method" value="DELETE">
+
+        <input type="submit" value="delete_band">
+    
+    </form>
+
+<%end%>

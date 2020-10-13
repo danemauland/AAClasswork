@@ -1,0 +1,9 @@
+<h3><%=@album.title%></h3>
+
+<form action=<%= edit_album_url(@album) %> method="GET">
+    <input type="submit" value="edit album">
+</form>
+
+<form action=<%= band_url(@album.band) %> method="GET">
+    <input type="submit" value="view band">
+</form>
