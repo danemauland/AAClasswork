@@ -1,0 +1,30 @@
+@media all and (max-width: 1000px) {
+    #sections-nav {
+      display: none;
+    }
+
+    .language-nav {
+        display: none;
+    }
+
+    .left-nav {
+        margin: 0px;
+    }
+
+    .right-nav button {
+        display: none;
+    }
+
+}
+
+#sections-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+#sections-sidebar.expand {
+    opacity: 1;
+}

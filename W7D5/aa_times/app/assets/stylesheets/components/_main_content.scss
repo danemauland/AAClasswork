@@ -75,18 +75,15 @@ article {
     margin-top: 10px;
 
     .col-1-2:first-child {
-        border: 1px solid red;
         padding-right: 20px;
 	}
 	
 	a:first-child{
         grid-column-start: 1;
-        border: 1px solid blue;
         grid-column-end: 3;
 	}
 
 	.opinion-sign-up {
-        border: 1px solid green;
         grid-column: 1 / span 2;
 		center{
 			margin-bottom: 20px;
