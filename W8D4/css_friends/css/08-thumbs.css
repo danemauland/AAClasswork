@@ -1,0 +1,10 @@
+/* PHASE 8: Thumbs */
+
+.thumbs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumbs > li {
+    width: 60px;
+}
